@@ -1,4 +1,4 @@
-#Pasos para crear una app con django-ninja
+# Pasos para crear una app con django-ninja
 
 - Agregar en el archivo requirements.txt las dependencias de Django y django-ninja
 - Crear proyecto con el comando django-admin startproject <nombre_del_proyecto>
