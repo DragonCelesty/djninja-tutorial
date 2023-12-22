@@ -1,0 +1,31 @@
+service: djninja
+
+plugins:
+    - serverless-dotenv-plugin
+    - serverless-prune-plugin
+    - serverless-python-requirements
+    - serverless-wsgi
+    - serverless-offline
+
+useDotenv: true
+
+custom:
+    wsgi:
+        app: djninja/wsgi.application
+        packRequirements: false
+
+provider:
+    name: aws
+    memorySize: 1024
+    timeout: 600
+    stage: ${opt:stage,'dev'}
+    region: us-east-1
+
+
+functions:
+    api:
+        handler: wsgi_handler
+        events:
+            - http: ANY /
+            - http: ANY /{proxy+}
+        timeout: 30
